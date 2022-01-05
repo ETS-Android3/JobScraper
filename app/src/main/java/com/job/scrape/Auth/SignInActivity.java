@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.job.scrape.Constants;
 import com.job.scrape.Main.MainScreenActivity;
+import com.job.scrape.Main.SkillsFormActivity;
 import com.job.scrape.R;
 import com.job.scrape.Models.User;
 
@@ -86,7 +87,6 @@ public class SignInActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void unused) {
             if (error.equals("")) {
-                Toast.makeText(getApplicationContext(),"Congratulations! you signed up successfully.",Toast.LENGTH_SHORT).show();
                 mainUser = new User(
                         userId,
                         userName,
@@ -95,7 +95,7 @@ public class SignInActivity extends AppCompatActivity {
                         userEmail,
                         userJob
                 );
-                intent = new Intent(SignInActivity.this, MainScreenActivity.class);
+                intent = new Intent(SignInActivity.this, SkillsFormActivity.class);
                 startActivity(intent);
 
                 SignInActivity.this.finish();

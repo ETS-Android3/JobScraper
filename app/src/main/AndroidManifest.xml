@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobScrape">
         <activity
+            android:name=".Main.SkillsFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".Main.SingleOfferActivity"
             android:exported="false" />
         <activity

@@ -17,6 +17,7 @@ import com.job.scrape.Adapters.OfferListAdapter;
 import com.job.scrape.Auth.SignInActivity;
 import com.job.scrape.Models.Offer;
 import com.job.scrape.R;
+import com.job.scrape.Utils.GFG;
 import com.job.scrape.Warehouse.Extractor;
 import com.job.scrape.Warehouse.Loader;
 import com.job.scrape.Warehouse.ResultHandler;
@@ -33,8 +34,11 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -71,56 +75,48 @@ public class MainScreenActivity extends AppCompatActivity implements OfferListAd
         recyclerView.setAdapter(adapter);
     }
 
-    private List<Offer> getOfferList () throws IOException, ExecutionException, InterruptedException {
+    private List<Offer> getOfferList () throws ExecutionException, InterruptedException {
 
-//        List<Document> rekruteDocumentList = Extractor.scrapeRekruteOffers("Software Engineer");
+        String lastScrapeDate = Extractor.getLastScrapeDate(SignInActivity.mainUser);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDateTime = dtf.format(now);
 
-        String json = null;
-        ResultHandler resultHandler = Extractor.getRekruteOffers("SE");
-        if (resultHandler.exception != null) {
-            Toast.makeText(getApplicationContext(), resultHandler.exception.toString(), Toast.LENGTH_SHORT).show();
-            json = "[{" +
-                    String.format("\"title\":\"%s\",", "offerList.get(0).getTitle()")+
-                    String.format("\"salary\":\"%s\",", "offerList.get(0).getSalary()")+
-                    String.format("\"pubDate\":\"%s\",", "offerList.get(0).getPubDate()")+
-                    String.format("\"postType\":\"%s\",", "offerList.get(0).getPostType()")+
-                    String.format("\"location\":\"%s\",", "offerList.get(0).getLocation()")+
-                    String.format("\"experience\":\"%s\",", "offerList.get(0).getExperience()")+
-                    String.format("\"link\":\"%s\",", "offerList.get(0).getLink()")+
-                    String.format("\"company\":%s", "{"+
-                            String.format("\"name\":\"%s\",", "CompanyName")+
-                            String.format("\"image\":\"%s\"", "https://www.rekrute.com/rekrute/file/entrepriseLogo/recruiter_id/4719")+
-                            "}")+
-                    "}]";
+        GFG dateTimeDiff = new GFG();
+        dateTimeDiff.findDifference(lastScrapeDate, currentDateTime);
+
+        String json = "[{" +
+                String.format("\"title\":\"%s\",", "Software Engineer")+
+                String.format("\"salary\":\"%s\",", "For Free")+
+                String.format("\"pubDate\":\"%s\",", "2022-01-01 00:00:00")+
+                String.format("\"postType\":\"%s\",", "CDI")+
+                String.format("\"location\":\"%s\",", "Kenitra")+
+                String.format("\"experience\":\"%s\",", "5 years")+
+                String.format("\"link\":\"%s\",", "http://localhost")+
+                String.format("\"company\":%s", "{"+
+                        String.format("\"name\":\"%s\",", "JobScrape")+
+                        String.format("\"image\":\"%s\"", "https://www.rekrute.com/rekrute/file/entrepriseLogo/recruiter_id/4719")+
+                        "}")+
+                "}]";;
+
+        if (dateTimeDiff.difference_In_Hours > 12) {
+            List<Document> rekruteDocumentList = Extractor.scrapeRekruteOffers("");
+
+            if (rekruteDocumentList.size() > 0) {
+                List<Offer> rekruteOfferList = Transformer.getRekruteOfferList(rekruteDocumentList);
+                Loader.loadOffers(rekruteOfferList, "rekrute.com", null);
+                json = Transformer.list2Json(rekruteOfferList);
+            }
         } else {
-            List<Offer> listOfOffers = resultHandler.offerList;
-            json = Transformer.list2Json(listOfOffers);
+            ResultHandler resultHandler = Extractor.getRekruteOffers(null);
+            if (resultHandler.exception == null) {
+                List<Offer> listOfOffers = resultHandler.offerList;
+                json = Transformer.list2Json(listOfOffers);
+            } else {
+                Toast.makeText(getApplicationContext(), resultHandler.exception.toString(), Toast.LENGTH_SHORT).show();
+            }
+
         }
-
-
-//        if (rekruteDocumentList.size() > 0) {
-//            List<Offer> rekruteOfferList = Transformer.getRekruteOfferList(rekruteDocumentList);
-//
-//            Loader.loadOffers(rekruteOfferList, "rekrute.com", null);
-
-
-//            json = Transformer.list2Json(listOfOffers);
-
-//        } else {
-//            json = "[{" +
-//                    String.format("\"title\":\"%s\",", "offerList.get(0).getTitle()")+
-//                    String.format("\"salary\":\"%s\",", "offerList.get(0).getSalary()")+
-//                    String.format("\"pubDate\":\"%s\",", "offerList.get(0).getPubDate()")+
-//                    String.format("\"postType\":\"%s\",", "offerList.get(0).getPostType()")+
-//                    String.format("\"location\":\"%s\",", "offerList.get(0).getLocation()")+
-//                    String.format("\"experience\":\"%s\",", "offerList.get(0).getExperience()")+
-//                    String.format("\"link\":\"%s\",", "offerList.get(0).getLink()")+
-//                    String.format("\"company\":%s", "{"+
-//                            String.format("\"name\":\"%s\",", "CompanyName")+
-//                            String.format("\"image\":\"%s\"", "https://www.rekrute.com/rekrute/file/entrepriseLogo/recruiter_id/4719")+
-//                            "}")+
-//                    "}]";
-//        }
 
         Gson gson = new Gson();
         Offer[] offers = gson.fromJson(json, Offer[].class);
