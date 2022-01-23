@@ -128,6 +128,10 @@ public class MainScreenActivity extends AppCompatActivity implements OfferListAd
         startActivity(new Intent(MainScreenActivity.this, SearchScreenActivity.class));
     }
 
+    public void getInsightsScreen(View v) {
+        startActivity(new Intent(MainScreenActivity.this, InsightsActivity.class));
+    }
+
     @Override
     public void onItemClick(Offer offer) {
         Intent intent = new Intent(MainScreenActivity.this, SingleOfferActivity.class);

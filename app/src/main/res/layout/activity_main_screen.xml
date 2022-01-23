@@ -56,13 +56,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="36dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:onClick="getInsightsScreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_user_64" />
+        app:srcCompat="@drawable/icons8_customer_insight_80" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

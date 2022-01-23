@@ -5,9 +5,13 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.10416666666666667" />
         <entry key="../../../.gradle/caches/transforms-3/e9612e7e6087009ff0139f0ccf77b379/transformed/appcompat-1.3.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_pbg.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/button_wbg.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/costum_btn.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/activity_insights.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12681159420289856" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_recommendation.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_search_offers.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_search_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
@@ -15,6 +19,8 @@
         <entry key="app/src/main/res/layout/activity_skills_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.12681159420289856" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/cluster_recycler_row.xml" value="0.13496376811594202" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.22" />
         <entry key="app/src/main/res/layout/recycler_row.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.209375" />
       </map>

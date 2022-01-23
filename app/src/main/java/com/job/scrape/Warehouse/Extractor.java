@@ -1,5 +1,6 @@
 package com.job.scrape.Warehouse;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 
 import com.job.scrape.Auth.SignInActivity;
@@ -48,6 +49,12 @@ public class Extractor {
     static class ScarpeTask extends AsyncTask<String, Void, List<Document>> {
 //        Document document = null;
         String error = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
 
         @Override
         protected List<Document> doInBackground(String... args) {

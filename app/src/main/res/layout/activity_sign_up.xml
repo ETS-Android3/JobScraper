@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Auth.SignUpActivity">
 
 
@@ -45,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_user_username_sign_up"/>
+        app:layout_constraintTop_toBottomOf="@+id/layout_user_username_sign_up" />
 
     <LinearLayout
         android:id="@+id/layout_user_password"
@@ -181,19 +182,24 @@
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/button_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
         android:layout_marginTop="52dp"
-        android:backgroundTint="@color/primary"
+        android:background="@drawable/button_pbg"
+        android:gravity="center_horizontal"
         android:onClick="signUp"
+        android:padding="10dp"
         android:text="Sign Up"
         android:textAllCaps="false"
+        android:textColor="@color/whiteTextColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_profession_sign_up"></Button>
+        app:layout_constraintTop_toBottomOf="@id/layout_profession_sign_up" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
