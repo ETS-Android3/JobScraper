@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/button_pbg.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/button_wbg.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/costum_btn.xml" value="0.10520833333333333" />
+        <entry key="app/src/main/res/layout/activity_cluster_offers.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_insights.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12681159420289856" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
@@ -17,7 +18,7 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_skills_form.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.12681159420289856" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.22" />
         <entry key="app/src/main/res/layout/cluster_recycler_row.xml" value="0.13496376811594202" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.22" />

@@ -3,25 +3,26 @@ package com.job.scrape.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cluster {
 
-    private List<Offer> offerList;
+    private ArrayList<Offer> offerList;
     private int clusterNum;
 
     public Cluster() { }
 
-    public Cluster(int clusterNum, List<Offer> offerList) {
+    public Cluster(int clusterNum, ArrayList<Offer> offerList) {
         this.offerList = offerList;
         this.clusterNum = clusterNum;
     }
 
-    public List<Offer> getOfferList() {
+    public ArrayList<Offer> getOfferList() {
         return offerList;
     }
 
-    public void setOfferList(List<Offer> offerList) {
+    public void setOfferList(ArrayList<Offer> offerList) {
         this.offerList = offerList;
     }
 

@@ -130,6 +130,16 @@ public class Offer implements Parcelable {
         return requirements;
     }
 
+    public String getStringRequirements() {
+        String sr = "";
+        for (int i = 0; i < requirements.size()-1; i++) {
+            sr += ","+requirements.get(i);
+        }
+        sr += ","+requirements.get(requirements.size()-1);
+
+        return sr;
+    }
+
     public void setRequirements(ArrayList<Integer> requirements) {
         this.requirements = requirements;
     }

@@ -15,7 +15,6 @@ public class History {
     }
 
     public Date getDateDate() {
-
         return date;
     }
     public String getDateString() {

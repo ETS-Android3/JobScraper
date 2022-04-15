@@ -41,8 +41,8 @@ public class OfferClustersAdapter extends RecyclerView.Adapter<OfferClustersAdap
 
     @Override
     public void onBindViewHolder(@NonNull OfferClustersAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.clusterNum.setText(clusterList.get(position).getClusterNum());
-        holder.offerClusterCount.setText("Price: $"+clusterList.get(position).getOfferList().size());
+        holder.clusterNum.setText("Cluster number : "+clusterList.get(position).getClusterNum());
+        holder.offerClusterCount.setText("Offers count : "+clusterList.get(position).getOfferList().size());
         holder.viewOffersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +50,9 @@ public class OfferClustersAdapter extends RecyclerView.Adapter<OfferClustersAdap
                 clickListener.onClusterBtnClick(cluster);
             }
         });
+        Glide.with(holder.thumbImage)
+                .load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnf7qOzDg4o3h9vgnkbIHM5jVSCFGK9WMiTQ&usqp=CAU")
+                .into(holder.thumbImage);
     }
 
     @Override
@@ -61,12 +64,14 @@ public class OfferClustersAdapter extends RecyclerView.Adapter<OfferClustersAdap
         TextView clusterNum;
         TextView offerClusterCount;
         TextView viewOffersBtn;
+        ImageView thumbImage;
 
         public MyViewHolder(View view) {
             super(view);
             clusterNum = view.findViewById(R.id.clusterNum);
             offerClusterCount = view.findViewById(R.id.offerClusterCount);
             viewOffersBtn = view.findViewById(R.id.viewOffersBtn);
+            thumbImage = view.findViewById(R.id.thumbImage);
         }
     }
 

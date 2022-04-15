@@ -2,6 +2,7 @@ package com.job.scrape.Main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -134,8 +135,10 @@ public class MainScreenActivity extends AppCompatActivity implements OfferListAd
 
     @Override
     public void onItemClick(Offer offer) {
-        Intent intent = new Intent(MainScreenActivity.this, SingleOfferActivity.class);
-        intent.putExtra("offer", offer);
+//        Intent intent = new Intent(MainScreenActivity.this, SingleOfferActivity.class);
+//        intent.putExtra("offer", offer);
+        System.out.println(offer.getLink());
+        Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(offer.getLink()));
         startActivity(intent);
     }
 }
